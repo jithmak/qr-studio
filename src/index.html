@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>QR Studio — Offline QR generator</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="vendor/qrcode.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <header><a class="brand" href="index.html" aria-label="QR Studio home">QR Studio</a><span class="offline"><i></i> Works offline</span></header>
+  <main>
+    <section class="intro"><h1>A link.<br>A code.<br>Yours to keep.</h1><p>Turn any link into a QR code.<br>No sign-up. No scan limits. No expiry.</p></section>
+    <section class="workspace" aria-label="QR generator">
+      <div class="editor">
+        <h2>Where should it go?</h2>
+        <p class="muted">YouTube, Google Forms, a website, or any other link.</p>
+        <form id="generator" novalidate>
+          <label for="link">Your link</label>
+          <textarea id="link" rows="4" placeholder="https://example.com/your-link" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="hint error"></textarea>
+          <p id="hint" class="hint">Paste the full link, including https://. Email, phone and app links work too.</p>
+          <p id="error" role="alert" hidden></p>
+          <button class="primary" type="submit">Generate QR code <span aria-hidden="true">↗</span></button>
+        </form>
+        <div class="privacy"><span aria-hidden="true">◎</span><p><strong>Your link stays on this device.</strong><br>Everything is generated in your browser.</p></div>
+      </div>
+      <div class="output">
+        <div id="placeholder"><div class="empty-symbol" aria-hidden="true">▦</div><h3>Your QR goes here</h3><p>Paste a link and generate your code.</p></div>
+        <div id="result" hidden><div class="qr-paper"><canvas id="qr" aria-label="Generated QR code" role="img"></canvas></div><p id="destination"></p></div>
+        <p id="status" role="status">Ready when you are.</p>
+        <div class="downloads"><button id="png" type="button" disabled>Download PNG</button><button id="svg" type="button" disabled>Download SVG</button></div>
+        <p class="hint">PNG: 4,096+ pixels. SVG: sharp at any size.</p>
+      </div>
+    </section>
+    <footer><strong>A permanent code. A direct connection.</strong><p>The QR code itself never expires. Its destination must stay available, and private links still require permission. Opening online destinations needs internet.</p><span>Made locally. Saved by you.</span></footer>
+  </main>
+</body>
+</html>
